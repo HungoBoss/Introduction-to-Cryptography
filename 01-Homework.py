@@ -32,6 +32,15 @@ def vernam_cipher(message, key):
     """
     result = ""
 
+    for i in range(len(message)):
+        if message[i] == " ":
+            result += " "
+        elif message[i] != key[i]:
+            result += "1"
+        else:
+            result += "0"
+
+    return result
 
 
 def main():
@@ -44,6 +53,12 @@ def main():
     print(f"Shift pattern: {shift}")
     print(f"Cipher: {caesar_cipher_encrypt(first_msg, shift)}")
 
+    # Second task
+    second_msg = "01100010 01101100 01101111 01101011"
+    key = "01110100 01101001 01110011 01101011"
+
+    print("2) ")
+    print(f"Encrypted message: {vernam_cipher(second_msg, key)}")
 
 if __name__ == "__main__":
     main()
