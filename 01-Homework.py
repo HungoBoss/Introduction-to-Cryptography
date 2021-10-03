@@ -56,6 +56,9 @@ def vernam_cipher(message, key):
 
 
 def main():
+    """
+    Main function containing all finished tasks.
+    """
     # First task
     first_msg = "Zaklady kryptografie"
     shift = 2
@@ -84,6 +87,12 @@ def main():
     # Fourth task
     answer = "Na každou pozici lze vložit číslice od 0 do 9 (tj. 10 číslic). Celkový počet variant je proto 10^4. Pravděpodobnost na správné zvolení PINu na první pokus je 1/10^4, což je 0,01%."
     print("4) ")
+    print(answer + "\n")
+
+
+    # Fifth task
+    answer = "Vernamova šifra požaduje, aby obě strany komunikace měly k dispozici předsdílený náhodný klíč, který bude mít alespoň stejnou délku jako má šifrovaná zpráva (pro velké zprávy to znamená, že klíče musí být obrovské, a to je jeden z důvodů, proč se toto šifrování moc nepoužívá). Druhou podmínkou je, že klíč jako takový by neměl být nikdy znovupoužit.\nSkutečnost, že je Vernamova šifra nerozluštitelná byla dokázána matematikem Claudem Shannonem. Jedná se o jedinou šifru, která je skutečně bezpečná. Původní zpráva není náhodná, avšak klíč je náhodný a jejich kombinací (v tomto případě operací XOR) vznikne výsledek, který je rovněž náhodný a tudíž velmi obtížně rozluštitelný."
+    print("5) ")
     print(answer + "\n")
 
 if __name__ == "__main__":
