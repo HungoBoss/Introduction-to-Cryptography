@@ -78,7 +78,13 @@ def main():
     third_msg = "vmwxqacrq lwuikq cswtg dgxzikwdidiu rm aiuwabibv"
     print("3) ")
     caesar_cipher_decrypt(third_msg)
-    print()
+    print("note: Correct key is #18\n")
+
+
+    # Fourth task
+    answer = "Na každou pozici lze vložit číslice od 0 do 9 (tj. 10 číslic). Celkový počet variant je proto 10^4. Pravděpodobnost na správné zvolení PINu na první pokus je 1/10^4, což je 0,01%."
+    print("4) ")
+    print(answer + "\n")
 
 if __name__ == "__main__":
     main()
