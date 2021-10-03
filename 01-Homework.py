@@ -5,6 +5,7 @@
 #                           #
 # # # # # # # # # # # # # # #
 
+
 def caesar_cipher_encrypt(message, shift):
     """
     Encrypts the input message using a Caesar cipher with a given shift and 
@@ -24,9 +25,25 @@ def caesar_cipher_encrypt(message, shift):
     
     return result
 
-first_msg = "Zaklady kryptografie"
-shift = 2
 
-print(f"Original message: {first_msg}")
-print(f"Shift pattern: {shift}")
-print(f"Cipher: {caesar_cipher_encrypt(first_msg, shift)}")
+def vernam_cipher(message, key):
+    """
+    Decrypts the message using Vernam's cipher with a given binary key.
+    """
+    result = ""
+
+
+
+def main():
+    # First task
+    first_msg = "Zaklady kryptografie"
+    shift = 2
+
+    print("1) ")
+    print(f"Original message: {first_msg}")
+    print(f"Shift pattern: {shift}")
+    print(f"Cipher: {caesar_cipher_encrypt(first_msg, shift)}")
+
+
+if __name__ == "__main__":
+    main()
