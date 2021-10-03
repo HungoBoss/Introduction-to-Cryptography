@@ -26,6 +26,18 @@ def caesar_cipher_encrypt(message, shift):
     return result
 
 
+def caesar_cipher_decrypt(message):
+    """
+    Decrypts the input message using a brute-force approach and prints all the
+    possible variants.
+    """
+    
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    for i in range(len(alphabet)):
+        print(f"Key #{i}: {caesar_cipher_encrypt(message, i)}")
+
+
 def vernam_cipher(message, key):
     """
     Decrypts the message using Vernam's cipher with a given binary key.
@@ -51,14 +63,22 @@ def main():
     print("1) ")
     print(f"Original message: {first_msg}")
     print(f"Shift pattern: {shift}")
-    print(f"Cipher: {caesar_cipher_encrypt(first_msg, shift)}")
+    print(f"Cipher: {caesar_cipher_encrypt(first_msg, shift)}\n")
+
 
     # Second task
     second_msg = "01100010 01101100 01101111 01101011"
     key = "01110100 01101001 01110011 01101011"
 
     print("2) ")
-    print(f"Encrypted message: {vernam_cipher(second_msg, key)}")
+    print(f"Encrypted message: {vernam_cipher(second_msg, key)}\n")
+
+
+    # Third task
+    third_msg = "vmwxqacrq lwuikq cswtg dgxzikwdidiu rm aiuwabibv"
+    print("3) ")
+    caesar_cipher_decrypt(third_msg)
+    print()
 
 if __name__ == "__main__":
     main()
