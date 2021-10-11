@@ -51,17 +51,35 @@ def calculateLCM(x, y):
     return (x * y / calculateGCD(x, y))
 
 
+def euler(n):
+    """
+    Calculates and returns the result of the Euler Totient Function.
+    """
+    result = 1
+
+    for i in range(2, n):
+        if calculateGCD(i, n) == 1:
+            result += 1
+    
+    return result
+
+
 def main():
     """
     Main function containing all finished tasks.
     """
 
     # First task
-    is_prime(73241)     # shouldn't be a prime number
+    is_prime(73241)
 
     # Second task
     print(f"GCD: {calculateGCD(6083, 68651)}")
     print(f"LCM: {calculateLCM(6083, 68651)}")
+
+    # Fourth task
+    print(f"Euler (1073): {euler(1073)}")
+    print(f"Euler (3389): {euler(3389)}")
+    print(f"Euler (11265): {euler(11265)}")
 
 
 if __name__ == "__main__":
