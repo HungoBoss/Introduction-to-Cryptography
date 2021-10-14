@@ -64,16 +64,34 @@ def euler(n):
     return result
 
 
+def modulo(x, y):
+    """
+    Returns x mod y. 
+    """
+    return x % y
+
+
 def main():
     """
     Main function containing all finished tasks.
     """
 
     # First task
+    print("1)")
     print(f"Euler (21): {euler(21)}")
     print(f"Euler (56): {euler(56)}")
     print(f"Euler (91): {euler(91)}")
-    print(f"Euler (243): {euler(243)}")
+    print(f"Euler (243): {euler(243)}\n")
+
+    # Third task
+    print("3)")
+    print(f"17 mod 6 = {modulo(17, 6)}")
+    print(f"-11 mod 7 = {modulo(-11, 7)}")
+    print(f"115 mod 17 = {modulo(115, 17)}")
+    print(f"-1 mod 9 = {modulo(-1, 9)}")
+    print(f"44 mod 13 = {modulo(44, 13)}")
+    print(f"56 mod 14 = {modulo(56, 14)}")
+    print(f"421 mod 21 = {modulo(421, 21)}\n")
 
 
 if __name__ == "__main__":
