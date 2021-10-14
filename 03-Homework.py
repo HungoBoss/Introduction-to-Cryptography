@@ -71,6 +71,16 @@ def modulo(x, y):
     return x % y
 
 
+def congruence(x, y, z):
+    """
+    Calculates x mod z and y mod z (congruence) and returns True if the results of both equations are the same. If not, returns False.
+    """
+    if x % z == y % z:
+        return True
+    else:
+        return False
+
+
 def main():
     """
     Main function containing all finished tasks.
@@ -92,6 +102,12 @@ def main():
     print(f"44 mod 13 = {modulo(44, 13)}")
     print(f"56 mod 14 = {modulo(56, 14)}")
     print(f"421 mod 21 = {modulo(421, 21)}\n")
+
+    # Fourth task
+    print("4)")
+    print(f"Congruence (-5 ≡ 12 mod 18): {congruence(-5, 12, 18)}")
+    print(f"Congruence (-16 ≡ 54 mod 35): {congruence(-16, 54, 35)}")
+    print(f"Congruence (-90 ≡ 26 mod 16): {congruence(-90, 26, 16)}")
 
 
 if __name__ == "__main__":
