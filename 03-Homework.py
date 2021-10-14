@@ -81,6 +81,16 @@ def congruence(x, y, z):
         return False
 
 
+def modular_inversion(a, n):
+    """
+    Calculates and returns the modular inversion of a mod n. Returns -1 if the inversion doesn't exists.
+    """
+    for i in range(1, n):
+        if (((a % n) * (i % n)) % n == 1):
+            return i
+    return -1
+
+
 def main():
     """
     Main function containing all finished tasks.
@@ -107,7 +117,15 @@ def main():
     print("4)")
     print(f"Congruence (-5 ≡ 12 mod 18): {congruence(-5, 12, 18)}")
     print(f"Congruence (-16 ≡ 54 mod 35): {congruence(-16, 54, 35)}")
-    print(f"Congruence (-90 ≡ 26 mod 16): {congruence(-90, 26, 16)}")
+    print(f"Congruence (-90 ≡ 26 mod 16): {congruence(-90, 26, 16)}\n")
+
+    # Fifth task
+    print("5)")
+    print(f"Modular inversion (a = 5, n = 9): {modular_inversion(5, 9)}")
+    print(f"Modular inversion (a = 4, n = 11): {modular_inversion(4, 11)}")
+    print(f"Modular inversion (a = 8, n = 13): {modular_inversion(8, 13)}")
+    print(f"Modular inversion (a = 17, n = 47): {modular_inversion(17, 47)}")
+    print(f"Modular inversion (a = 85, n = 17): {modular_inversion(85, 17)}")
 
 
 if __name__ == "__main__":
