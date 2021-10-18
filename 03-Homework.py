@@ -131,6 +131,11 @@ def main():
     print(f"Modular inversion (a = 17, n = 47): {modular_inversion(17, 47)}")
     print(f"Modular inversion (a = 85, n = 17): {modular_inversion(85, 17)}")
 
+    # Sixth task
+    print("6)")
+    print("Generators: phi(phi(13)) = phi(12) = 4")
+    print("List of generators: 2, 6, 7, 11")
+    
 
 if __name__ == "__main__":
     main()
