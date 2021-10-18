@@ -103,6 +103,10 @@ def main():
     print(f"Euler (91): {euler(91)}")
     print(f"Euler (243): {euler(243)}\n")
 
+    # Second task
+    print("2)")
+    print("Pokud jsou A a N nesoudělná [tj. GCD(a, n) = 1], pak existuje inverzní prvek, kterým lze celou rovnici vynásobit a tudíž kongruence platí. V případě, že A a N nejsou soudělná, kongruence neplatí.\n")
+
     # Third task
     print("3)")
     print(f"17 mod 6 = {modulo(17, 6)}")
