@@ -7,26 +7,6 @@
 
 from math import sqrt
 
-def is_prime(n):
-    """
-    Determines whether a given number is a prime or not. Prints the result into the console.
-    """
-    prime = False
-
-    if n > 1:
-        for i in range(2, int(sqrt(n)) + 1):
-            if (n % i == 0):
-                prime = True
-                break
-        
-        if prime:
-            print(f"{n} is NOT a prime number!")
-        else:
-            print(f"{n} is prime number!")
-    else:
-        print(f"{n} is NOT a prime number!")
-
-
 def calculateGCD(x, y):
     """
     Calculates and returns the GCD value of X and Y.
@@ -41,14 +21,6 @@ def calculateGCD(x, y):
             gcd = i
     
     return gcd
-
-
-def calculateLCM(x, y):
-    """
-    Calculates and returns the LCM value of X and Y.
-    LCM can be calculated by the multiplication of X and Y devided by the GCD of those two numbers.
-    """
-    return (x * y / calculateGCD(x, y))
 
 
 def euler(n):
@@ -91,6 +63,37 @@ def modular_inversion(a, n):
     return -1
 
 
+def is_generator(x, n):
+    """
+    Utility function that determines whether X is generator of a cyclic group or not.
+    """
+    arr = [j for j in range(1, n)]
+
+    for i in range(n):
+        subresult = x ** i % n
+        if subresult in arr:
+            arr.remove(subresult)
+
+    if len(arr) == 0:
+        return True
+    else:
+        return False
+
+
+def cyclic_group(n):
+    """
+    Return the amount of generators of a cyclic group.
+    """
+    generators = 0
+
+    for i in range(1, n):
+        if is_generator(i, n):
+            generators += 1
+            print(f"Generator found: {i}")
+    
+    return generators
+
+
 def main():
     """
     Main function containing all finished tasks.
@@ -129,13 +132,12 @@ def main():
     print(f"Modular inversion (a = 4, n = 11): {modular_inversion(4, 11)}")
     print(f"Modular inversion (a = 8, n = 13): {modular_inversion(8, 13)}")
     print(f"Modular inversion (a = 17, n = 47): {modular_inversion(17, 47)}")
-    print(f"Modular inversion (a = 85, n = 17): {modular_inversion(85, 17)}")
+    print(f"Modular inversion (a = 85, n = 17): {modular_inversion(85, 17)}\n")
 
     # Sixth task
     print("6)")
-    print("Generators: phi(phi(13)) = phi(12) = 4")
-    print("List of generators: 2, 6, 7, 11")
-    
+    print(f"Generators: {cyclic_group(13)}")
+
 
 if __name__ == "__main__":
     main()
