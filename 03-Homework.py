@@ -5,8 +5,6 @@
 #                           #
 # # # # # # # # # # # # # # #
 
-from math import sqrt
-
 def calculateGCD(x, y):
     """
     Calculates and returns the GCD value of X and Y.
