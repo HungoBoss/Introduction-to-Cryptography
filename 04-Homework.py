@@ -17,11 +17,11 @@ def congruence(x, y, z):
         return False
 
 
-def fermat_test(n):
+def fermat_test(n, k):
     """
-    Prints whether a given number N is a prime number or not using a Fermat Primality Test.
+    Prints whether a given number N is a prime number or not using a Fermat Primality Test. The test is computed k-times (each time for a different base)
     """
-    for i in range(4):
+    for i in range(k):
         a = randint(1, n-1)
         result = congruence(a ** (n-1), 1, n)
         print(f"{a}^{n-1} ≡ 1 mod {n} is {result}")
@@ -31,13 +31,58 @@ def fermat_test(n):
     print(f"{n} is a prime number!")
 
 
+def miller_rabin_test(n, k):
+    """
+    Prints whether a given number N is a prime number or not using a Miller-Rabin Primality Test. The test is computed k-times (each time for a different base)
+    """
+    s = 0
+    r = n - 1
+
+    # Determining r and s
+    while r % 2 == 0:
+        r >>= 1         # Binary shift acts the same way as division by 2
+        s += 1
+    assert(2 ** s * r == n - 1)
+
+    def is_composite(a):
+        """
+        Utility function that determines whether a given A is a composite number or not. Returns True in case it is and False in case it is not.
+        """
+        if pow(a, r, n) == 1:       # Equals to (a ** d) % n
+            return False
+        for i in range(s):
+            if pow(a, 2**i * r, n) == n-1:
+                return False
+        return True
+
+    for i in range(k):
+        a = randint(2, n)
+        if is_composite(a):
+            return False
+
+    return True
+
+    
+    
+
+
 def main():
     """
     Main function containing all finished tasks.
     """
-    fermat_test(87)
+    # First task
+    print("1) ")
+    fermat_test(87, 4)
     print()
-    fermat_test(631)
+    fermat_test(631, 4)
+    print()
+
+    # Second task
+    print("2) ")
+    print(f"Is 313 a prime number: {miller_rabin_test(313, 2)}")
+    print()
+    print(f"Is 847 a prime number: {miller_rabin_test(847, 2)}")
+    print()
 
 
 if __name__ == "__main__":
