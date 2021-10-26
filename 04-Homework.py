@@ -105,6 +105,11 @@ def main():
     lucas_lehmer_test()
     print()
     lucas_lehmer_test()
+    print()
+
+    # Fourth task
+    print("4) ")
+    print("Každé složené číslo N je součin prvočísel p1 a p2, přičemž platí N = p1 * p2.\nV případě, že by obě čísla p byla stejná, tak bude n = p^2 a tudíž bude platit, že p = sqrt(n).\nPokud nebudou čísla p1 a p2 nabývat stejné hodnoty, pak bude vždy jedno z prvočísel menší, než sqrt(n).")
 
 
 if __name__ == "__main__":
