@@ -64,12 +64,15 @@ def miller_rabin_test(n, k):
 
 
 def lucas_lehmer_test():
+    """
+    Generates a Marsenne number and finds out whether it is prime or not.
+    """
     s = randint(7, 19)
     print(f"Generated s = {s}")
     n = (2**s) - 1
     print(f"Value of N: {n}")
     
-    u = []
+    u = []              # List holding u numbers at each and every index
     u.append(4)
 
     for i in range(1, (s-2)+1):
@@ -83,6 +86,9 @@ def lucas_lehmer_test():
 
 
 def square_and_multiply(x, y):
+    """
+    Calculates and returns the value of X pow Y using a Square and multiply algorithm.
+    """
     exp = bin(y)
     result = x
 
