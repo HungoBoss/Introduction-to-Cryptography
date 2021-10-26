@@ -19,7 +19,7 @@ def congruence(x, y, z):
 
 def fermat_test(n, k):
     """
-    Prints whether a given number N is a prime number or not using a Fermat Primality Test. The test is computed k-times (each time for a different base)
+    Prints whether a given number N is a prime number or not using a Fermat Primality Test. The test is computed k-times (each time for a different result)
     """
     for i in range(k):
         a = randint(1, n-1)
@@ -33,7 +33,7 @@ def fermat_test(n, k):
 
 def miller_rabin_test(n, k):
     """
-    Prints whether a given number N is a prime number or not using a Miller-Rabin Primality Test. The test is computed k-times (each time for a different base)
+    Prints whether a given number N is a prime number or not using a Miller-Rabin Primality Test. The test is computed k-times (each time for a different result)
     """
     s = 0
     r = n - 1
@@ -82,6 +82,18 @@ def lucas_lehmer_test():
         print(f"{n} is NOT a prime number!")
 
 
+def square_and_multiply(x, y):
+    exp = bin(y)
+    result = x
+
+    for i in range(3, len(exp)):
+        result *= result
+        if(exp[i:i+1] == '1'):
+            result = result * x
+    
+    return result
+
+
 def main():
     """
     Main function containing all finished tasks.
@@ -109,8 +121,12 @@ def main():
 
     # Fourth task
     print("4) ")
-    print("Každé složené číslo N je součin prvočísel p1 a p2, přičemž platí N = p1 * p2.\nV případě, že by obě čísla p byla stejná, tak bude n = p^2 a tudíž bude platit, že p = sqrt(n).\nPokud nebudou čísla p1 a p2 nabývat stejné hodnoty, pak bude vždy jedno z prvočísel menší, než sqrt(n).")
+    print("Každé složené číslo N je součin prvočísel p1 a p2, přičemž platí N = p1 * p2.\nV případě, že by obě čísla p byla stejná, tak bude n = p^2 a tudíž bude platit, že p = sqrt(n).\nPokud nebudou čísla p1 a p2 nabývat stejné hodnoty, pak bude vždy jedno z prvočísel menší, než sqrt(n).\n")
 
+
+    # Fifth task
+    print("5) ")
+    print(f"5^39 mod 23 = {square_and_multiply(5, 39) % 23}")
 
 if __name__ == "__main__":
     main()
