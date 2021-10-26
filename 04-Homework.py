@@ -26,9 +26,9 @@ def fermat_test(n, k):
         result = congruence(a ** (n-1), 1, n)
         print(f"{a}^{n-1} ≡ 1 mod {n} is {result}")
         if result == False:
-            print(f"{n} is NOT a prime number!")
+            print(f"\t{n} is NOT a prime number!")
             return
-    print(f"{n} is a prime number!")
+    print(f"\t{n} is a prime number!")
 
 
 def miller_rabin_test(n, k):
@@ -62,8 +62,24 @@ def miller_rabin_test(n, k):
 
     return True
 
+
+def lucas_lehmer_test():
+    s = randint(7, 19)
+    print(f"Generated s = {s}")
+    n = (2**s) - 1
+    print(f"Value of N: {n}")
     
-    
+    u = []
+    u.append(4)
+
+    for i in range(1, (s-2)+1):
+        u_i = ((u[i-1]) ** 2 - 2) % n
+        u.append(u_i)
+
+    if u[s-2] == 0:
+        print(f"{n} is a prime number!")
+    else:
+        print(f"{n} is NOT a prime number!")
 
 
 def main():
@@ -83,6 +99,12 @@ def main():
     print()
     print(f"Is 847 a prime number: {miller_rabin_test(847, 2)}")
     print()
+
+    # Third task
+    print("3) ")
+    lucas_lehmer_test()
+    print()
+    lucas_lehmer_test()
 
 
 if __name__ == "__main__":
