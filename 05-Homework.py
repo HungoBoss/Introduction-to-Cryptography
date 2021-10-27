@@ -51,6 +51,7 @@ def chinese_remainder_theorem(a, m):
 
     return result % M
 
+
 def main():
     # First task
     print("1) ")
@@ -82,6 +83,17 @@ def main():
     print("x ≡ 10 (mod 47)")
     print(f"\tResult: {chinese_remainder_theorem([11, -8, 10], [17, 67, 47])}")
 
+    # Sixth task
+    print("6) ")
+    print("x ≡ 3 (mod 6)")
+    print("x ≡ 3 (mod 5)")
+    print("x + 6 ≡ 0 (mod 7)")
+    print("Upravíme poslední výraz na tvar:")
+    print("x ≡ -6 (mod 7)")
+    print("Což odpovídá...")
+    print("x ≡ 1 (mod 7)\n")
+    print(f"\tResult: {chinese_remainder_theorem([3, 3, 1], [6, 5, 7]) + get_M([6, 5, 7])}")
+
 
 # Utility functions
 def calculateGCD(x, y):
@@ -111,6 +123,19 @@ def euler(n):
             result += 1
     
     return result
+
+
+def get_M(m):
+    """
+    Returns the value of big modulo M.
+    """
+    result = 1
+    
+    for i in range(len(m)):
+        result *= m[i]
+    
+    return result
+
 
 if __name__ == "__main__":
     main()
