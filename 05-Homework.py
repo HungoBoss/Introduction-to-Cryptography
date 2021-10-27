@@ -69,6 +69,12 @@ def main():
     print("x ≡ 5 (mod 22)")
     print(f"\tResult: {chinese_remainder_theorem([11, 5], [5, 22])}")
 
+    # Fourth task
+    print("4) ")
+    print("x ≡ -4 (mod 35)")
+    print("x ≡ 15 (mod 43)")
+    print(f"\tResult: {chinese_remainder_theorem([-4, 15], [35, 43])}")
+
 
 # Utility functions
 def calculateGCD(x, y):
