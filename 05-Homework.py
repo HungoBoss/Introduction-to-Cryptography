@@ -38,7 +38,7 @@ def chinese_remainder_theorem(a, m):
 
     L = []
     for i in range(len(m)):
-        Li = pow(N[i], -1, m[i])
+        Li = pow(N[i], -1, m[i])    # Overloading the default pow function returns the modular inversion
         L.append(Li)
     
     result = 0
@@ -92,10 +92,14 @@ def main():
     print("x ≡ -6 (mod 7)")
     print("Což odpovídá...")
     print("x ≡ 1 (mod 7)\n")
+    # We have to add big modulo M value in order to get the amount of coins that were available in the past
     print(f"\tResult: {chinese_remainder_theorem([3, 3, 1], [6, 5, 7]) + get_M([6, 5, 7])}")
 
 
-# Utility functions
+#
+#   UTILITY FUNCTIONS
+#       these functions have been implemented in the past assignemnts
+#
 def calculateGCD(x, y):
     """
     Calculates and returns the GCD value of X and Y.
