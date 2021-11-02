@@ -29,12 +29,17 @@ def extended_euclidean_algorithm(a, b):
 def main():
     # First task
     print("1)")
-    print(f"GCD(10547, 1651) = {basic_euclidean_algorithm(10547, 1651)}")
+    print(f"GCD(10547, 1651) = {basic_euclidean_algorithm(10547, 1651)}\n")
     
     # Second task
     print("2)")
     _, x, _ = extended_euclidean_algorithm(345, 577)
-    print(f"345^(-1) mod 577 = {x % 577}")
+    print(f"345^(-1) mod 577 = {x % 577}\n")
+
+    # Third task
+    print("3)")
+    _, x, _ = extended_euclidean_algorithm(16, 357)
+    print(f"16^(-1) mod 357 = {x % 357}\n")
 
 
 if __name__ == "__main__":
