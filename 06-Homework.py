@@ -5,6 +5,53 @@
 #                           #
 # # # # # # # # # # # # # # #
 
+from math import gcd
+from sympy import isprime
+
+def pollard_algorithm(n):
+    base = 2
+    i = 2
+
+    while True:
+        base = (base ** i) % n
+        d = gcd((base-1), n)
+
+        if d > 1:
+            return d
+            
+        i += 1
+
+
+def find_prime_factors(n):
+    num = n
+    ans = []
+
+    while True:
+        d = pollard_algorithm(num)
+        ans.append(d)
+        r = int(num / d)
+
+        if isprime(r):
+            ans.append(r)
+            break
+        else:
+            num = r
+
+    return ans
+
+
+def find_private_key(n, public_key):
+    factors = find_prime_factors(n)
+    print(f"Factors of 129621733357 are: {factors}")
+
+    phi_n = (factors[0] - 1) * (factors[1] - 1)
+    print(f"Φ(n) = {phi_n}")
+
+    private_key = pow(public_key, -1, phi_n)
+    
+    return private_key
+
+
 def basic_euclidean_algorithm(a, b):
     """
     Recursive function that calculates the GCD of given numbers a and b using a basic version of Euclidean algorithm. Returns the value of GCD.
@@ -40,6 +87,10 @@ def main():
     print("3)")
     _, x, _ = extended_euclidean_algorithm(16, 357)
     print(f"16^(-1) mod 357 = {x % 357}\n")
+
+    # Fourth task
+    print("4)")
+    print(f"Private key: {find_private_key(129621733357, 9)}")
 
 
 if __name__ == "__main__":
