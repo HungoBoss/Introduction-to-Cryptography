@@ -52,6 +52,46 @@ def find_private_key(n, public_key):
     return private_key
 
 
+def decypher_rsa(cryptogram, n, private_key):
+    message = square_and_multiply_always(cryptogram, private_key, n)
+    str_message = str(message)
+    letters = []
+
+    for i in range(len(str_message) // 2):
+        letter = str_message[2*i:(2*i)+2]
+        letters.append(letter)
+
+    decyphered_message = ""
+
+    for i in range(len(letters)):
+        decyphered_message += chr((int(letters[i]) + 65 - 1))
+
+    print(letters)
+
+    print(decyphered_message)
+
+
+def square_and_multiply_always(base, exp, mod):
+    R0=1
+    R1 = base
+    c = '{0:b}'.format(exp)
+    i=len(c)-1
+    t=0
+    c=c[::-1]
+    while(i>=0):
+        if(t==0):
+            Rt=R0
+        elif(t==1):
+            Rt=R1
+        else:
+            print("t != 0 or 1")
+        R0=(R0*Rt)%mod
+        d=int(c[i])
+        t=(t^d)
+        i=i-1+t
+    return R0
+
+
 def basic_euclidean_algorithm(a, b):
     """
     Recursive function that calculates the GCD of given numbers a and b using a basic version of Euclidean algorithm. Returns the value of GCD.
@@ -91,6 +131,10 @@ def main():
     # Fourth task
     print("4)")
     print(f"Private key: {find_private_key(129621733357, 9)}")
+
+    # Fifth task
+    print("5)")
+    decypher_rsa(605710893992533, 3324847060925479, 1813552871415011)
 
 
 if __name__ == "__main__":
