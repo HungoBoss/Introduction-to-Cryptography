@@ -9,6 +9,9 @@ from math import gcd
 from sympy import isprime
 
 def pollard_algorithm(n):
+    """
+    Utility function that generates prime factors of a given number n using a Pollard p-1 algorithm.
+    """
     base = 2
     i = 2
 
@@ -18,11 +21,14 @@ def pollard_algorithm(n):
 
         if d > 1:
             return d
-            
+
         i += 1
 
 
 def find_prime_factors(n):
+    """
+    Utility function that finds both of the prime factors of the given number N.
+    """
     num = n
     ans = []
 
@@ -41,8 +47,11 @@ def find_prime_factors(n):
 
 
 def find_private_key(n, public_key):
+    """
+    Driver function that finds the private key using a brute-force method.
+    """
     factors = find_prime_factors(n)
-    print(f"Factors of 129621733357 are: {factors}")
+    print(f"Factors of {n} are: {factors}")
 
     phi_n = (factors[0] - 1) * (factors[1] - 1)
     print(f"Φ(n) = {phi_n}")
@@ -53,6 +62,9 @@ def find_private_key(n, public_key):
 
 
 def decypher_rsa(cryptogram, n, private_key):
+    """
+    Decyphers a given RSA cryptogram with the knowledge of a given private key.
+    """
     message = square_and_multiply_always(cryptogram, private_key, n)
     str_message = str(message)
     letters = []
@@ -64,31 +76,34 @@ def decypher_rsa(cryptogram, n, private_key):
     decyphered_message = ""
 
     for i in range(len(letters)):
-        decyphered_message += chr((int(letters[i]) + 65 - 1))
+        decyphered_message += chr((int(letters[i]) + 65 - 1))   # We have to subtract one because the alphabet mentioned in the assignment starts with 1 and not 0.
 
-    print(letters)
+    print(f"Numerical values of the letters: {letters}")
 
-    print(decyphered_message)
+    return decyphered_message
 
 
 def square_and_multiply_always(base, exp, mod):
-    R0=1
+    """
+    Utility function that calculates base^exp % mod using a Square and multiply algorithm.
+    """
+    R0 = 1
     R1 = base
     c = '{0:b}'.format(exp)
-    i=len(c)-1
-    t=0
-    c=c[::-1]
-    while(i>=0):
-        if(t==0):
-            Rt=R0
-        elif(t==1):
-            Rt=R1
+    i = len(c)-1
+    t = 0
+    c = c[::-1]
+    while(i >= 0):
+        if(t == 0):
+            Rt = R0
+        elif(t == 1):
+            Rt = R1
         else:
             print("t != 0 or 1")
-        R0=(R0*Rt)%mod
-        d=int(c[i])
-        t=(t^d)
-        i=i-1+t
+        R0 = (R0*Rt) % mod
+        d = int(c[i])
+        t = (t^d)
+        i = i-1 + t
     return R0
 
 
@@ -130,11 +145,11 @@ def main():
 
     # Fourth task
     print("4)")
-    print(f"Private key: {find_private_key(129621733357, 9)}")
+    print(f"Private key: {find_private_key(129621733357, 9)}\n")
 
     # Fifth task
     print("5)")
-    decypher_rsa(605710893992533, 3324847060925479, 1813552871415011)
+    print(f"Decyphered text: {decypher_rsa(605710893992533, 3324847060925479, 1813552871415011)}")
 
 
 if __name__ == "__main__":
