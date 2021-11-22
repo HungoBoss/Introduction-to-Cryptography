@@ -9,6 +9,37 @@ from Crypto.PublicKey import DSA
 from math import sqrt
 
 
+def is_generator(x, n):
+    """
+    Utility function that determines whether X is generator of a cyclic group or not.
+    """
+    arr = [j for j in range(1, n)]
+
+    for i in range(n):
+        subresult = x ** i % n
+        if subresult in arr:
+            arr.remove(subresult)
+
+    if len(arr) == 0:
+        return True
+    else:
+        return False
+
+
+def cyclic_group(n):
+    """
+    Return the amount of generators of a cyclic group.
+    """
+    generators = 0
+
+    for i in range(1, n):
+        if is_generator(i, n):
+            generators += 1
+            print(f"Generator found: {i}")
+    
+    return generators
+
+
 def discrete_logarithm(prime, base, arg):
     result = 0
     current = 1
@@ -45,21 +76,22 @@ def main():
     # First task
     print("1)")
     print_recommendation_for_DSA()
-    print()
 
     # Second task
-    print("2)")
+    print("\n2)")
     DSA_parameters()
-    print()
 
     # Third task
-    print("3)")
+    print("\n3)")
     print(f"q = {find_q(29, 13)}")
-    print()
 
     # Fourth task
-    print("4)")
+    print("\n4)")
     print(f"x = {discrete_logarithm(34963, 1212, 11144)}")
+
+    # Fifth task
+    print("\n5)")
+    cyclic_group(17)
 
 if __name__ == "__main__":
     main()
