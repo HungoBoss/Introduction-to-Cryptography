@@ -9,6 +9,19 @@ from Crypto.PublicKey import DSA
 from math import sqrt
 
 
+def diffie_helman(p, g, A, B):
+    b = discrete_logarithm(p, g, B)
+    a = discrete_logarithm(p, g, A)
+    
+    K = A ** b % p
+    K_2 = B ** a % p
+
+    print(f"a = {a}, b = {b}")
+    
+    if K == K_2:
+        return K
+
+
 def is_generator(x, n):
     """
     Utility function that determines whether X is generator of a cyclic group or not.
@@ -92,6 +105,10 @@ def main():
     # Fifth task
     print("\n5)")
     cyclic_group(17)
+
+    # Sixth task
+    print("\n6)")
+    print(f"K' = K = {diffie_helman(105541, 26, 84035, 22250)}")
 
 if __name__ == "__main__":
     main()
