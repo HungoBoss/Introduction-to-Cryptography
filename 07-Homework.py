@@ -9,7 +9,10 @@ from Crypto.PublicKey import DSA
 from math import sqrt
 
 
-def diffie_helman(p, g, A, B):
+def diffie_hellman(p, g, A, B):
+    """
+    Base algorithm for Diffie-Hellman.
+    """
     b = discrete_logarithm(p, g, B)
     a = discrete_logarithm(p, g, A)
     
@@ -21,7 +24,51 @@ def diffie_helman(p, g, A, B):
     if K == K_2:
         return K
 
+    
+def discrete_logarithm(prime, base, arg):
+    """
+    Discrete algorithm using a baby-step giant-step approach to get the value of a discrete logarithm.
+    """
+    result = 0
+    current = 1
+    while result < prime - 1:
+        if (current-arg) % prime == 0:
+            return(result)
+        else:
+            current *= base
+            result += 1
+    return -1
 
+
+def find_q(p, g):
+    """
+    Function that uses brute-force approach to find parameter Q in DSA.
+    """
+    for i in range(1, p):
+        if g ** i % p == 1:
+            return i
+    return -1
+
+
+def DSA_parameters():
+    """
+    Function for generating DSA parameters with the prime number of the length at least 1024 bits. Using a nasty trick to display the domain of characters.
+    """
+    key = DSA.generate(1024)
+    p, q, g = key.domain()
+    print(f"p = {p}")
+    print(f"q = {q}")
+    print(f"g = {g}")
+
+
+def print_recommendation_for_DSA():
+    """
+    Function for printing recommended p and q for DSA.
+    """
+    print("|p| >= 2048 bitů")
+    print("|q| >= 224 bitů")
+
+    
 def is_generator(x, n):
     """
     Utility function that determines whether X is generator of a cyclic group or not.
@@ -51,39 +98,7 @@ def cyclic_group(n):
             print(f"Generator found: {i}")
     
     return generators
-
-
-def discrete_logarithm(prime, base, arg):
-    result = 0
-    current = 1
-    while result < prime - 1:
-        if (current-arg) % prime == 0:
-            return(result)
-        else:
-            current *= base
-            result += 1
-    return -1
-
-
-def find_q(p, g):
-    for i in range(1, p):
-        if g ** i % p == 1:
-            return i
-    return -1
-
-
-def DSA_parameters():
-    key = DSA.generate(1024)
-    p, q, g = key.domain()
-    print(f"p = {p}")
-    print(f"q = {q}")
-    print(f"g = {g}")
-
-
-def print_recommendation_for_DSA():
-    print("|p| >= 2048 bitů")
-    print("|q| >= 224 bitů")
-
+    
 
 def main():
     # First task
